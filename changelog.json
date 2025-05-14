@@ -1,0 +1,197 @@
+[
+  {
+    "version": "1.5.6",
+    "date": "2021-01-12",
+    "changes": [
+      "Removed annoying \"this file changed on disk\" warning when a file changes on disk"
+    ]
+  },
+  {
+    "version": "1.5.5",
+    "date": "2020-12-08",
+    "changes": [
+      "Automatically back up current file in same directory (prefixed with ~)",
+      "Show \"edited\" indicator on tabs with unsaved changes"
+    ]
+  },
+  {
+    "version": "1.5.4",
+    "date": "2020-08-18",
+    "changes": [
+      "Automatically update app even after license expires",
+      "Fix: dictionary toolbar not loading definitions",
+      "Fix: export preview of plain text appears as white on white when in dark mode",
+      "Fix: intermittent bug which prevented tabs from loading",
+      "Fix: print all pages instead of just the first 10",
+      "Fix: spell checker on Windows"
+    ]
+  },
+  {
+    "version": "1.5.3",
+    "date": "2020-04-18",
+    "changes": [
+      "Append error log to bug report email",
+      "Fix: macOS Catalina (10.15) support",
+      "Fix: Respect user's page size choice when printing or exporting to PDF"
+    ]
+  },
+  {
+    "version": "1.5.2",
+    "date": "2019-09-22",
+    "changes": ["Fix: saving new files was broken by v1.5.1"]
+  },
+  {
+    "version": "1.5.1",
+    "date": "2019-09-22",
+    "changes": [
+      "Corrupt files can be now recovered if they have been opened previously with Superscript >= v1.5.1"
+    ]
+  },
+  {
+    "version": "1.5.0",
+    "date": "2019-07-19",
+    "changes": [
+      "App-wide custom dictionary",
+      "Exporting images is now optional",
+      "Select app-wide spell check language (Mac only, in preferences)",
+      "Select script-level spell check language (Mac only, using the \"language\" frontmatter attribute)",
+      "Updated dependencies for better performance and security",
+      "Fix: changing editor font in preferences now takes affect in editors immediately",
+      "Fix: exporting Word doc with images results in corrupted .docx file",
+      "Fix: images not showing on MacOS when they were imported into the script on Windows",
+      "Fix: learnt words do not persist between sessions",
+      "Fix: pressing left or right arrow key causes document to scroll to top on Windows 7",
+      "Fix: spell check not updating when words are added to or removed from the dictionary",
+      "Fix: word replacement via context menu spell checker cannot be undone"
+    ]
+  },
+  {
+    "version": "1.4.0",
+    "date": "2019-02-21",
+    "changes": [
+      "Export panels headings as Page.Panel (i.e. \"1.2\" or \"Panel 1.2\")",
+      "Go directly to a page or panel by using the Page.Panel format in the Find toolbar"
+    ]
+  },
+  {
+    "version": "1.3.6",
+    "date": "2019-01-06",
+    "changes": [
+      "Allow Javascript-style regular expressions in find and replace",
+      "Highlight search matches while you edit",
+      "Fix: importing images into new, unsaved documents",
+      "Fix: duplicate comments when reopening a file"
+    ]
+  },
+  {
+    "version": "1.3.5",
+    "date": "2018-12-14",
+    "changes": [
+      "Auto-update is now optional. Open the preferences tab to turn it off.",
+      "Fix: race condition causing tabs intermittently not to load",
+      "Updated dependencies"
+    ]
+  },
+  {
+    "version": "1.3.3",
+    "date": "2018-10-28",
+    "changes": [
+      "Fix: autocomplete bug in scripts containing images",
+      "Fix: images not showing on MacOS when they were imported into the script on Windows"
+    ]
+  },
+  {
+    "version": "1.3.2",
+    "date": "2018-10-07",
+    "changes": [
+      "Fix: first special heading not exporting",
+      "Fix: search matches in headings not highlighting"
+    ]
+  },
+  {
+    "version": "1.3.1",
+    "date": "2018-10-01",
+    "changes": ["Fix: license activation bug"]
+  },
+  {
+    "version": "1.3.0",
+    "date": "2018-09-25",
+    "changes": [
+      "Autocomplete is now toggled with Ctrl+Space instead of Alt key",
+      "Implemented autohide menu (Linux/Windows)",
+      "Implemented color themes (in preferences)",
+      "Implemented dictionary/thesaurus toolbar",
+      "Implemented in-app panel count per page (in preferences)",
+      "Implemented markdown-style \"#\" page headings",
+      "Implemented panel and word counts in page navigation (shown on hover)",
+      "Implemented preferences tab/window",
+      "Implemented script font selection (in preferences)",
+      "Implemented script page borders",
+      "Implemented tabs for all platforms",
+      "Moved word count settings to new preferences tab/window",
+      "Moved page navigation to left side of window and removed auto-hide",
+      "Remember open documents between sessions",
+      "Removed \"Toggle Page View\" from View menu and Touch bar",
+      "Removed \"phone\" from frontmatter attributes to improve Page/Panel autocomplete",
+      "Restyled bookmarks to be more obvious",
+      "Depricating special page headings: Characters, Notes, Outline and Summary. These will be removed in a future version. Be sure to convert them to \"#\" style.",
+      "Fix: undo/redo bugs involving autoformatting",
+      "Fix: editor not becoming editable immediately when starting a free trial"
+    ]
+  },
+  {
+    "version": "1.2.2",
+    "date": "2018-08-30",
+    "changes": [
+      "Added \"Save and close\" button to close window confirmation dialog",
+      "Implemented autosave (optional, toggle in File menu)",
+      "Implemented styling indicators for bold, italic, underline and strikethrough",
+      "Fix: error when using menu commands while dialog is open"
+    ]
+  },
+  {
+    "version": "1.2.1",
+    "date": "2018-08-25",
+    "changes": [
+      "Fix: automatic text transformation within lists",
+      "Fix: broken nested lists",
+      "Fix: missing strikethrough style",
+      "Fix: tabs moving to new window on focus"
+    ]
+  },
+  {
+    "version": "1.2.0",
+    "date": "2018-08-24",
+    "changes": [
+      "Added toggle-able character numbering (in View menu)",
+      "Implemented tabbed windows (Mac only, depends on system preferences)",
+      "Experimental: Added special page headings: Characters, Notes, Outline and Summary",
+      "Fix: styles, lists and newlines when using copy and paste",
+      "Fix: race conditions when searching"
+    ]
+  },
+  {
+    "version": "1.1.0",
+    "date": "2018-07-27",
+    "changes": [
+      "Implemented character heading shortcut. Type just \":\" to insert last used character, \"::\" for second to last used, and so on.",
+      "Implemented \"Add to character list\" and \"Add to vocabulary list\" in context menu.",
+      "Implemented page outline toggle button.",
+      "Added border to page tabs for when \"page view\" is turned off.",
+      "Removed smooth scrolling when using search bar.",
+      "Fix: editor scrolling to top when window is resized."
+    ]
+  },
+  {
+    "version": "1.0.1",
+    "date": "2018-07-15",
+    "changes": [
+      "Fix: whitespace trimming of inline styles in dialog when exporting to PDF."
+    ]
+  },
+  {
+    "version": "1.0.0",
+    "date": "2018-07-14",
+    "changes": ["First public release."]
+  }
+]

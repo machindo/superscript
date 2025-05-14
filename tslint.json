@@ -1,0 +1,35 @@
+{
+  "extends": "tslint-config-standard",
+  "rules": {
+    "indent": [true, "spaces"],
+    "no-return-await": true,
+    "no-floating-promises": false,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true
+      }
+    ],
+    "ter-indent": [
+      true,
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "space-before-function-paren": [
+      true,
+      {
+        "anonymous": "always",
+        "named": "never",
+        "asyncArrow": "ignore"
+      }
+    ],
+    "prefer-const": [
+      true,
+      {
+        "destructuring": "all"
+      }
+    ]
+  }
+}

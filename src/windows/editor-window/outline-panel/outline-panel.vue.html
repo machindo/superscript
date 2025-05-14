@@ -1,0 +1,24 @@
+<div v-if="pages.length" class="page-outline" :class="{ visible }">
+  <div class="page-links">
+    <button ref="titlePageLink" class="page-link" :class="{ current: !currentPage, bookmarked: bookmarks[0] }" @click="scrollTo(0, $event)"
+      @dblclick="bookmark(0, $event)" @contextmenu="bookmark(0, $event)">
+      <span class="page-link--text">Title</span>
+    </button>
+    <button v-for="(page, index) of pages" :key="index" :ref="`page${page.number}Link`" class="page-link" :class="{ current: page.number === currentPage, bookmarked: bookmarks[page.number] }"
+      @click="scrollTo(page.index, $event)" @dblclick="bookmark(page.number, $event)" @contextmenu="bookmark(page.number, $event)"
+      title="Right-click to bookmark">
+      <span class="page-link--text">{{ page.headingText | formatHeadingText }}</span>
+      <span v-if="page.type === 'page'" class="page-link--optional-text" title="Panel count &amp; word count">
+        {{ page.panels.length }}p {{ page.wordCount}}w
+      </span>
+    </button>
+  </div>
+  <div class="page-outline--toggle-buttons">
+    <button class="page-outline--toggle-button" @click="toggle" :title="visible ? 'Hide page tabs' : 'Show page tabs'">
+      <svg width="24" height="24">
+        <path v-if="visible" d="M15.41,16.59L10.83,12l4.58-4.59L14,6l-6,6l6,6L15.41,16.59z" />
+        <path v-else d="M8.59,16.59L13.17,12L8.59,7.41L10,6l6,6l-6,6L8.59,16.59z" />
+      </svg>
+    </button>
+  </div>
+</div>

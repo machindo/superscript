@@ -1,0 +1,48 @@
+<div class="ui-wrapper">
+  <lobby-pane v-show="view === 'lobby'" ref="lobbyPane"></lobby-pane>
+  <div v-show="view === 'editor'" class="editor-view">
+    <div class="toolbars">
+      <dictionary-toolbar ref="dictionaryToolbar"></dictionary-toolbar>
+      <diff-toolbar ref="diffToolbar"></diff-toolbar>
+      <format-toolbar ref="formatToolbar"></format-toolbar>
+      <search-toolbar ref="searchToolbar"></search-toolbar>
+      <go-to-toolbar ref="gotoToolbar"></go-to-toolbar>
+      <letterer-toolbar ref="lettererToolbar"></letterer-toolbar>
+    </div>
+    <editor-pane ref="editorPane" :comments="comments"></editor-pane>
+  </div>
+
+  <v-tour ref="newDocumentTour" name="newDocument" :steps="newDocumentTourSteps" :callbacks="newDocumentTourCallbacks">
+    <template slot-scope="tour">
+      <transition name="fade">
+        <v-step v-if="tour.currentStep === index" v-for="(step, index) of tour.steps" :key="index" :step="step"
+          :previous-step="tour.previousStep" :next-step="tour.nextStep" :stop="tour.stop" :isFirst="tour.isFirst"
+          :isLast="tour.isLast" :labels="tour.labels">
+          <div slot="actions">
+            <div class="v-step__buttons">
+              <button @click="tour.stop" v-if="!tour.isLast" class="v-step__button">
+                Skip tour
+              </button>
+              <button @click="tour.previousStep" v-if="!tour.isFirst" class="v-step__button">
+                Previous
+              </button>
+              <button @click="tour.nextStep" v-if="!tour.isLast" class="v-step__button">
+                Next
+              </button>
+              <button @click="tour.stop" v-if="tour.isLast" class="v-step__button">
+                Finish
+              </button>
+            </div>
+
+            <div class="hide-tour-control">
+              <label for="hideTourInput">
+                <input type="checkbox" name="hideTourInput" id="hideTourInput" v-model="hideTour" />
+                Don't show this again
+              </label>
+            </div>
+          </div>
+        </v-step>
+      </transition>
+    </template>
+  </v-tour>
+</div>

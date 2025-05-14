@@ -1,0 +1,71 @@
+@import '../../vars'
+
+.format-toolbar
+  display flex
+  justify-content center
+
+  > .pane
+    width 100%
+
+  .spacer
+    display inline-block
+    width 1px
+    height 2rem
+    margin 0 1ch
+    background var(--border-color)
+
+.format-toolbar--element-type
+  flex 0 0 20ch
+  padding 1ch
+  border solid 1px var(--border-color)
+  text-align center
+
+.style-button
+  height 2rem
+  width 2rem
+  margin 0 .5ch
+  font-family $editorFontFamily
+  font-size 1rem
+
+  &[selected]
+    color $brandSecondaryColor
+    outline solid 1px
+
+.style-button--bold
+.style-indicator--bold
+  font-weight bold
+
+.style-button--italic
+.style-indicator--italic
+  font-style italic
+
+.style-button--strike
+.style-indicator--strike
+  text-decoration line-through
+
+.style-button--underline
+.style-indicator--underline
+  text-decoration underline
+
+.style-button--icon
+  padding 4px
+
+.format-hover-toolbar
+  position fixed
+  bottom 1ch
+  right 1ch
+
+  z-index 1
+
+.style-indicator
+  display inline-flex
+  height 2em
+  width 2em
+  margin 1ch 0 0 1ch
+  background var(--editor-page-background)
+  font-family $editorFontFamily
+  font-size 1rem
+  color $brandSecondaryColor
+  outline solid 1px
+  align-items center
+  justify-content center

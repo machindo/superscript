@@ -1,0 +1,121 @@
+@import './vars'
+
+.pane
+  display flex
+  padding 1ch
+  user-select none
+  align-items center
+  z-index 1
+
+.toolbar
+  border-bottom solid 1px var(--border-color)
+  background var(--window-background)
+
+fieldset
+  margin 1em 0
+  border solid 1px var(--fieldset-border-color)
+
+.input-group
+  display flex
+  align-items center
+
+  > input
+    flex 1
+
+label
+  font-weight bold
+
+  &.checkbox-label, fieldset &
+    font-weight normal
+
+  &.checkbox-label
+    display flex
+
+input, button
+  margin-right 1ch
+  padding 1ch
+  box-shadow none
+  font-size .8em
+  color inherit
+
+input, select
+  border none
+  background none
+
+  &:focus
+    border-color $brandSecondaryColor
+    outline none
+
+input
+  border-bottom solid 1px var(--input-border-color)
+
+  &[type=range]
+    width 400px
+    max-width 100%
+    min-width 100px
+    vertical-align middle
+
+  &.error
+    border-bottom-color currentColor
+    color $errorColor
+
+.select-wrapper
+  display inline-block
+  margin-right 1ch
+  border-bottom solid 1px var(--input-border-color)
+
+select
+  height calc(2.5em - 2px)
+  border-radius 0
+  font-size .8em
+  color inherit
+
+option
+  color #222
+
+button
+  border solid 1px var(--input-border-color)
+  background none
+  fill currentColor
+
+  &:hover:not(:disabled)
+  &:focus:not(:disabled)
+    border-color $brandSecondaryColor
+    color $brandSecondaryColor
+    fill $brandSecondaryColor
+    outline none
+
+  &.primary
+    font-weight bold
+
+  &:disabled
+    opacity .5
+
+    &:hover, &:focus
+      background none
+
+hr
+  border-top solid 1px var(--border-color)
+  border-left none
+  border-right none
+  border-bottom none
+
+.close-button
+  margin-left auto
+  padding 0
+  border none
+
+.inline-form
+  display inline-block
+
+:disabled label, label[disabled]
+  opacity .5
+
+.toggle-button
+  margin 0 .5ch
+  font-family $editorFontFamily
+  font-size 1rem !important
+
+  &[selected]
+    color $brandSecondaryColor
+    outline solid 1px !important

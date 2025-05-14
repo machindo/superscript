@@ -1,0 +1,41 @@
+@import './vars.styl'
+
+*, *::after, *::before
+  box-sizing border-box
+
+:root
+  --window-background $editorBackground
+  --window-text-color #111111
+
+body
+  margin 0
+  background var(--window-background)
+  font-family system-ui
+  color var(--window-text-color)
+
+@import './dark-theme.styl'
+@import './light-theme.styl'
+
+::-webkit-scrollbar
+  height 12px
+  width 12px
+
+::-webkit-scrollbar-corner:hover
+  background var(--window-background)
+
+::-webkit-scrollbar-track
+  background none
+
+  &:hover
+    background var(--window-background)
+
+    &:horizontal
+      border-top solid 1px var(--border-color)
+
+    &:vertical
+      border-left solid 1px var(--border-color)
+
+::-webkit-scrollbar-thumb
+  border solid 1px var(--window-background)
+  border-radius 2px
+  background var(--scrollbar-thumb-background-color)

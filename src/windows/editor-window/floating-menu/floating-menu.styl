@@ -1,0 +1,32 @@
+$background = #fafafa
+$disabledColor = #666
+$selectedBackground = #86aecc
+$selectedColor = white
+
+.floating-menu
+  grid-area editor
+  position absolute
+  margin-top 1.5em
+  border solid 1px WindowFrame
+  border-radius 2px
+  background var(--editor-page-background)
+  box-shadow 0 3px 8px rgba(black .4)
+  font-family Courier Prime Sans, Courier New, Courier, monospace
+  overflow hidden
+
+.floating-menu--item
+  padding 1ex
+  cursor pointer
+
+  &.bold
+    font-weight bold
+
+  &.hover
+  &:hover
+    background $selectedBackground
+    color $selectedColor
+
+.floating-menu--none
+  padding 1ex
+  font-style italic
+  color $disabledColor

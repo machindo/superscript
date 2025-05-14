@@ -1,0 +1,18 @@
+<div v-if="exportSettings" class="export-settings-actions">
+  <button
+    v-if="showPrintButton"
+    :disabled="!readyToPrint"
+    class="primary"
+    @click="print"
+  >
+    Print&hellip;
+  </button>
+  <button :class="{ primary: !showPrintButton }" @click="save">
+    Save&hellip;
+  </button>
+  <button v-if="showCopyButton" @click="copy">
+    {{ copied ? 'Copied' : 'Copy' }}
+  </button>
+  <button @click="cancel">Cancel</button>
+  <button @click="done">Done</button>
+</div>

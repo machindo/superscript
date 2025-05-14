@@ -1,0 +1,130 @@
+@import '../../vars'
+
+.page-outline
+  grid-area outline
+
+  &.visible
+    min-width 105px
+
+.page-outline--toggle-buttons
+  display flex
+  position sticky
+  top 0
+  left 0
+  height 0
+  opacity 0
+  z-index 1
+  transition opacity .15s
+
+  &:hover
+  :hover + &
+    opacity .8
+
+.page-outline--toggle-button
+  position absolute
+  padding 1em
+  border none
+  background var(--window-background)
+
+.page-links
+  position fixed
+  top 0
+  bottom 0
+  margin-left -120%
+  padding 60px 0 5px
+  overflow-x visible
+  overflow-y auto
+  transition left .2s
+
+  .visible > &
+    margin-left 0
+
+  &::-webkit-scrollbar
+    display none
+
+.page-link
+  display flex
+  position relative
+  float left
+  clear both
+  width 100%
+  max-width 300px
+  padding 2px 0
+  border none
+  background-clip padding-box
+  text-align center
+  text-decoration none
+  font-size .75em
+  color inherit
+  cursor pointer
+  align-items center
+
+  &.current::before
+    content ''
+    display block
+    position absolute
+    top 9px
+    left 0
+    border-top solid 5px transparent
+    border-left solid 5px currentColor
+    border-right solid 5px transparent
+    border-bottom solid 5px transparent
+    z-index 1
+
+  &.bookmarked.current::before
+    border-left-color $brandContrastColor
+
+.page-link--text
+  position relative
+  max-width 100px
+  height 2em
+  padding 1ex 2ch 1ex 1.5ch
+  text-align left
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+  opacity .2
+  transition opacity .15s
+  line-height 1
+  pointer-events none
+
+  .bookmarked > &
+    background $brandSecondaryColor
+    color $brandContrastColor !important
+
+    &::after
+      content ''
+      display block
+      position absolute
+      top 0
+      right -1px
+      bottom 0
+      width 0
+      height 0
+      border-top solid 1em transparent
+      border-right solid 6px var(--window-background)
+      border-bottom solid 1em transparent
+
+  .page-links:hover &
+    opacity .5
+
+  :hover > &
+    color $brandSecondaryColor
+    opacity 1 !important
+
+  .current &
+    opacity 1 !important
+
+.page-link--optional-text
+  flex 1
+  margin-left 2ch
+  text-align right
+  line-height 1
+  white-space nowrap
+  font-size 10px
+  opacity 0
+  transition opacity .15s
+  pointer-events none
+
+  .page-links:hover &
+    opacity .5

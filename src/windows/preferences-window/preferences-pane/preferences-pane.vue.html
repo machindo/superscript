@@ -1,0 +1,125 @@
+<div class="pane preferences-pane">
+  <fieldset class="preferences-pane--section">
+    <legend>Word Count Settings</legend>
+
+    <label>
+      <input type="checkbox" v-model="wordCountSettingsShowCount" /> Display
+      word count
+    </label>
+
+    <label>
+      <input type="checkbox" v-model="wordCountSettingsShowLimit" /> Display
+      word count limits
+    </label>
+
+    <fieldset :disabled="!wordCountSettings.showLimit">
+      <legend>Word count limits</legend>
+
+      <label>Words per page</label>
+      <input type="number" v-model.number="wordCountSettingsPage" min="1" />
+
+      <label>Words per bubble</label>
+      <input type="number" v-model.number="wordCountSettingsBubble" min="1" />
+    </fieldset>
+  </fieldset>
+  <fieldset class="preferences-pane--section">
+    <legend>Window Settings</legend>
+
+    <label>Color Theme</label>
+    <div class="select-wrapper">
+      <select v-model="colorThemeChoice">
+        <option value="dark-theme">Dark</option>
+        <option value="light-theme">Light</option>
+      </select>
+    </div>
+
+    <div v-if="!isMac">
+      <label>Menu Bar Visibility</label>
+      <div class="select-wrapper">
+        <select v-model="autoHideMenuBarChoice">
+          <option :value="false">Visible</option>
+          <option :value="true"
+            >Hidden (press Alt key to toggle menu bar)</option
+          >
+        </select>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset class="preferences-pane--section">
+    <legend>Editor</legend>
+
+    <label>Typeface</label>
+    <div class="select-wrapper">
+      <select v-model="editorFontFamily">
+        <option value="Courier Prime Sans">Courier Prime Sans (default)</option>
+        <optgroup
+          :label="availableFonts.length ? 'Installed fonts' : 'Installed fonts (loading...)'"
+        >
+          <option v-for="font of availableFonts" :value="font"
+            >{{ font }}</option
+          >
+        </optgroup>
+      </select>
+    </div>
+    <button @click="resetEditorFontFamily">Reset to default</button>
+    <p>
+      <small
+        >Note: typeface selection only applies to the editor. Exported documents
+        will a default typeface.</small
+      >
+    </p>
+
+    <label>
+      <input type="checkbox" v-model="showPanelCount" /> Display panel count on
+      headings
+    </label>
+
+    <div class="editor-sample">
+      <h1>PAGE 1</h1>
+      <h2>Panel 1</h2>
+      <p>A long, long time ago, in a house no bigger than a breadbox ...</p>
+    </div>
+
+    <div v-if="isMac">
+      <label>Spell check language</label>
+      <div class="select-wrapper">
+        <select v-model="spellCheckLang">
+          <option v-for="locale of locales" :value="locale.key">
+            {{ locale.name }} ({{ locale.key }})
+          </option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="preferences-pane--section">
+    <legend>Custom Dictionary</legend>
+
+    <ul v-if="words.length" class="word-list">
+      <li v-for="word of words" :key="word" class="word-list--item">
+        <span class="word-list--word">{{ word }}</span>
+        <button type="button" @click="removeWordsFromDictionary([word])">
+          Forget
+        </button>
+      </li>
+    </ul>
+    <p v-else>
+      Dictionary is empty
+    </p>
+
+    <form @submit.prevent="learnWord">
+      <label for="newWord">Add a word to the dictionary</label>
+      <input type="text" id="newWord" v-model="newWord" />
+      <button type="submit">Learn word</button>
+    </form>
+  </fieldset>
+
+  <fieldset class="preferences-pane--section">
+    <legend>App Settings</legend>
+
+    <label>
+      <input type="checkbox" v-model="autoUpdateValue" /> Automatically download
+      and install Superscript updates
+    </label>
+  </fieldset>
+</div>

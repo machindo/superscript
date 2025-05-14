@@ -1,0 +1,9 @@
+<div v-if="isShown" :class="{ 'floating-menu': true }" :style="{ top: position.top + 'px', left: position.left + 'px' }">
+  <div v-for="(item, index) in items" :key="index" :class="{ 'floating-menu--item': true, 'hover': index === hoveredIndex, 'bold': item.bold }"
+    @click="click(index)">
+    {{ item.label }}
+  </div>
+  <div v-if="!items.length" class="floating-menu--none">
+    No suggestions
+  </div>
+</div>

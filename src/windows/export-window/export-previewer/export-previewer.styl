@@ -1,0 +1,58 @@
+@import '../../vars'
+
+$fromColor = rgba(white .3)
+$toColor = white
+
+@keyframes loading-blink
+  0%
+    fill $fromColor
+  10%
+    fill $toColor
+  30%
+    fill $fromColor
+
+.export-previewer
+  grid-area preview
+  position relative
+  padding 1em
+  overflow auto
+
+  canvas
+    width 100%
+
+  .text-preview
+    padding 1em
+    background $pageBackground
+    white-space pre-wrap
+    font-family $editorFontFamily
+    color black
+
+.loading-graphic
+  display block
+  position absolute
+  top 50%
+  left 50%
+  width 300px
+  fill $fromColor
+  transform translate(-50%, -50%)
+
+  for num in (1..9)
+    .loading-graphic--rect-{num}
+      animation-name loading-blink
+      animation-iteration-count infinite
+      animation-duration 1s
+      animation-delay (num - 1) * .11s
+
+.docx-warning
+  margin-bottom 1em
+  font-size .8em
+  text-align center
+
+.cutoff-warning
+  margin-bottom 0
+  font-size .8em
+  text-align center
+
+@media print
+  .export-previewer
+    padding 0

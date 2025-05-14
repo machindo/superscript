@@ -1,0 +1,52 @@
+<div v-show="visible" class="pane toolbar search-toolbar">
+  <input
+    type="text"
+    v-model="searchText"
+    :class="{ error: hasError }"
+    ref="searchInput"
+    @keyup.enter.exact="findNext"
+    @keyup.shift.enter="findPrevious"
+    placeholder="Find"
+  />
+  <input type="text" v-model="replacementText" placeholder="Replace" />
+  <button type="button" class="primary" @click="findNext">Find next</button>
+  <button type="button" @click="findPrevious">Find previous</button>
+  <button type="button" @click="replace">Replace</button>
+  <button type="button" @click="replaceAll">Replace all</button>
+
+  <button
+    class="toggle-button"
+    :selected="matchCase"
+    tabindex="0"
+    title="Match case"
+    @click="toggleMatchCase"
+  >
+    Aa
+  </button>
+  <button
+    class="toggle-button"
+    :selected="useRegEx"
+    tabindex="0"
+    title="Use regular expressions"
+    @click="toggleRegEx"
+  >
+    .*
+  </button>
+  <div class="tip">
+    Go directly to a page or panel: Search "12." to go to page twelve. Search
+    "12.4" to go to page 12, panel 4.
+  </div>
+  <button type="button" class="close-button" @click="hide">
+    <svg
+      height="24"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+      />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </button>
+</div>

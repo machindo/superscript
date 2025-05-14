@@ -1,0 +1,57 @@
+@import '../../vars.styl'
+@import '../../renderer.styl'
+@import '../../forms'
+
+html
+body
+.ui-wrapper
+  height 100%
+
+.ui-wrapper
+  display flex
+  flex-direction column
+
+.title-bar
+  display flex
+  position relative
+  width 100%
+  height 38px
+  background var(--title-bar-background)
+  -webkit-app-region drag
+  user-select none
+  overflow hidden
+
+.bar-tabs
+  flex 1
+  display flex
+  padding 0 10px
+
+  &.is-mac
+    padding-left 80px
+
+.window-buttons
+  display flex
+
+.window-button
+  margin 0
+  width 38px
+  height 38px
+  padding 5px
+  border none
+  fill var(--inactive-window-text-color)
+  -webkit-app-region no-drag
+
+.tab-views
+  flex 1
+  position relative
+  border-top solid 2px var(--window-background)
+  overflow auto
+
+.tab-view
+  position absolute
+  width 100%
+  height 100%
+  top -100%
+
+  &.active
+    top 0

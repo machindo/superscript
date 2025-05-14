@@ -1,0 +1,17 @@
+@import '../../vars'
+
+.export-settings-actions
+  grid-area actions
+  display flex
+  padding 1em
+  border-left solid 1px var(--border-color)
+  -webkit-user-select none
+
+  @media print
+    display none
+
+  > button
+    flex 1
+
+    &:last-of-type
+      margin-right 0

@@ -1,0 +1,16 @@
+<div class="ui-container">
+  <export-previewer
+    ref="exportPreviewer"
+    :exportSettings="exportSettings"
+    @setReadyToPrint="setReadyToPrint"
+  ></export-previewer>
+  <export-settings-form
+    ref="exportSettingsForm"
+    v-model="exportSettings"
+  ></export-settings-form>
+  <export-actions
+    ref="exportActions"
+    :exportSettings="exportSettings"
+    :readyToPrint="readyToPrint"
+  ></export-actions>
+</div>

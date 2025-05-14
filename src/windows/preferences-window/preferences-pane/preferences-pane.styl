@@ -1,0 +1,46 @@
+@import '../../vars'
+
+.pane.preferences-pane
+  width 760px
+  margin auto
+  border none
+  flex-direction column
+  align-items stretch
+
+  label
+    display block
+    margin 1em 0 5px
+
+  button
+    border solid 1px var(--border-color)
+
+  select
+    min-width 400px
+
+.editor-sample
+  margin-top 1em
+  padding 1ch 2ch
+  border solid 1px var(--editor-page-border-color)
+  background var(--editor-page-background)
+  font-family var(--editor-font-family)
+  color var(--editor-color)
+
+  > h1
+    font-size calc((var(--font-size) * 16 / 9))
+
+  > h2
+    font-size calc((var(--font-size) * 4 / 3))
+
+.word-list
+  margin 0
+  padding 0
+  list-style none
+
+.word-list--item
+  margin-bottom 1ex
+
+.word-list--word
+  display inline-block
+  min-width 10ch
+  margin-right 1ex
+  font-weight bold

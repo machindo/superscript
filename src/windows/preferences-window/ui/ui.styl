@@ -1,0 +1,35 @@
+@import '../../vars'
+@import '../../typography'
+@import '../../forms'
+
+body
+  -webkit-user-select none
+
+pre
+  font-family Courier Prime Sans, Courier New, monospace
+
+.editor-view
+  display grid
+  height 100vh
+  grid-template-areas \
+    'toolbars   toolbars  toolbars' \
+    'editor     editor    editor'
+  grid-template-columns 1fr auto 1fr
+  grid-template-rows auto 1fr
+
+.toolbars
+  grid-area toolbars
+  z-index 2
+
+.editor
+  flex 1
+  overflow auto
+
+[hidden]
+  display unset
+  position absolute
+  top -9999px
+  height 0
+  width 0
+  overflow hidden
+  visibility hidden

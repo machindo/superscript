@@ -1,0 +1,69 @@
+<div v-show="visible" class="pane toolbar words-toolbar">
+  <form @submit.prevent="lookUp">
+    <input type="text" v-model="dictionaryTerm" @keypress="reset" placeholder="Term">
+
+    <button :disabled="!enabled">Look up</button>
+
+    <div class="select-wrapper">
+      <select v-model="detail">
+        <option value="">All</option>
+        <option value="definitions">Definition</option>
+        <option value="synonyms">Synonyms</option>
+        <option value="antonyms">Antonyms</option>
+        <option value="examples">Examples</option>
+        <!-- <option value="typeOf">Type of</option>
+        <option value="hasTypes">Has Types</option>
+        <option value="partOf">Part of</option>
+        <option value="hasParts">Has Parts</option>
+        <option value="instanceOf">Instance of</option>
+        <option value="hasInstances">hasInstances</option>
+        <option value="similarTo">Similar to</option>
+        <option value="also">Also</option>
+        <option value="entails">Entails</option>
+        <option value="memberOf">Member of</option>
+        <option value="hasMembers">Has Members</option>
+        <option value="substanceOf">Substance of</option>
+        <option value="hasSubstances">Has Substances</option>
+        <option value="inCategory">In Category</option>
+        <option value="hasCategories">Has Categories</option>
+        <option value="usageOf">Usage of</option>
+        <option value="hasUsages">Has Usages</option>
+        <option value="inRegion">In Region</option>
+        <option value="regionOf">Region of</option>
+        <option value="pertainsTo">Pertains to</option> -->
+      </select>
+    </div>
+  </form>
+
+  <div v-if="searchCount >= maxSearchCount" class="maxed-out-notice">
+    You have reached the max number of searches for this session. Reload the app for more.
+  </div>
+
+  <button type="button" class="close-button" @click="hide">
+    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+      <path d="M0 0h24v24H0z" fill="none" />
+    </svg>
+  </button>
+
+  <div v-if="searched && foundWord && results && results.length" class="words-toolbar--results">
+    <div v-for="result of results" class="words-toolbar--result">
+      <h2>
+        {{ foundWord }}
+        <small v-if="result.partOfSpeech">{{ result.partOfSpeech }}</small>
+      </h2>
+
+      <p v-if="result.definition">{{ result.definition }}</p>
+
+      <div v-for="(value, detail) of result">
+        <div v-if="detail !== 'definition' && detail !== 'partOfSpeech' && detail !== 'word'">
+          <h3>{{ detail | camelToWords }}</h3>
+          <div class="words-toolbar--detail-value">{{ value | listToString }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-if="searched && (!foundWord || !results || !results.length)" class="words-toolbar--results">
+    <div class="words-toolbar--result">No results</div>
+  </div>
+</div>

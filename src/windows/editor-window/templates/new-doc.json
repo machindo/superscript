@@ -1,0 +1,78 @@
+{
+  "delta": {
+    "ops": [
+      {
+        "insert": "Script Title"
+      },
+      {
+        "attributes": {
+          "frontmatter": "true"
+        },
+        "insert": "\n"
+      },
+      {
+        "insert": "by The Author"
+      },
+      {
+        "attributes": {
+          "frontmatter": "true"
+        },
+        "insert": "\n\n"
+      },
+      {
+        "insert": "issue: 1"
+      },
+      {
+        "attributes": {
+          "frontmatter": "true"
+        },
+        "insert": "\n\n"
+      },
+      {
+        "insert": "PAGE 1"
+      },
+      {
+        "attributes": {
+          "count": "1",
+          "header": 1
+        },
+        "insert": "\n"
+      },
+      {
+        "insert": "\nPanel 1"
+      },
+      {
+        "attributes": {
+          "count": "1",
+          "header": 2
+        },
+        "insert": "\n"
+      },
+      {
+        "insert": "Panel description. Something profound and unexpected should happen here.\n"
+      },
+      {
+        "insert": "\nCharacter:"
+      },
+      {
+        "attributes": {
+          "count": "1",
+          "header": 3
+        },
+        "insert": "\n"
+      },
+      {
+        "insert": "  Sup?"
+      },
+      {
+        "attributes": {
+          "blockquote": true
+        },
+        "insert": "\n"
+      },
+      {
+        "insert": "\n"
+      }
+    ]
+  }
+}

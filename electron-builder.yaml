@@ -1,0 +1,40 @@
+directories:
+  output: dist
+  buildResources: build
+appId: app.superscript.superscript
+productName: Superscript
+files:
+  - 'packed/*'
+linux:
+  category: Office
+  target:
+    - appImage
+    - deb
+    - rpm
+mac:
+  category: public.app-category.productivity
+  gatekeeperAssess: false
+  hardenedRuntime: true
+  target:
+    - dmg
+    # - pkg
+    - zip
+  entitlements: build/entitlements.mac.plist
+win:
+  target:
+    - nsis
+nsis:
+  perMachine: true
+fileAssociations:
+  - ext: sup
+    description: Comic Book Script
+    mimeType: application/x.superscript
+    name: Superscript Document
+    role: Editor
+protocols:
+  - name: Superscript URL
+    schemes:
+      - superscript
+    role: Editor
+publish:
+  provider: github

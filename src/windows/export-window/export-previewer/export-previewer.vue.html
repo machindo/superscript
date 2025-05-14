@@ -1,0 +1,23 @@
+<div class="export-previewer">
+  <svg ref="loadingGraphic" viewBox="0 0 10 13" class="loading-graphic">
+    <rect class="loading-graphic--rect-1" x="0" y="0" width="3" height="4"></rect>
+    <rect class="loading-graphic--rect-2" x="3.5" y="0" width="3" height="4"></rect>
+    <rect class="loading-graphic--rect-3" x="7" y="0" width="3" height="4"></rect>
+
+    <rect class="loading-graphic--rect-4" x="0" y="4.5" width="3" height="4"></rect>
+    <rect class="loading-graphic--rect-5" x="3.5" y="4.5" width="3" height="4"></rect>
+    <rect class="loading-graphic--rect-6" x="7" y="4.5" width="3" height="4"></rect>
+
+    <rect class="loading-graphic--rect-7" x="0" y="9" width="3" height="4"></rect>
+    <rect class="loading-graphic--rect-8" x="3.5" y="9" width="3" height="4"></rect>
+    <rect class="loading-graphic--rect-9" x="7" y="9" width="3" height="4"></rect>
+  </svg>
+  <div v-show="showDocxWarning" class="docx-warning">
+    This preview uses the PDF formatting. Your Word document may look different.
+  </div>
+  <div class="canvases" ref="canvases"></div>
+  <p v-show="showCutoffWarning" class="cutoff-warning">
+    Only the first {{ pageCutoff }} pages of your script are shown here, but all {{ pageCount }} pages will be
+    exported.
+  </p>
+</div>

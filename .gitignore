@@ -1,0 +1,27 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Dependencies
+node_modules
+
+# Compiled
+/dist
+/packed
+/coverage
+
+# Temporary files
+.awcache
+.nyc_output
+/temp
+/webpack-progress
+/v8-compile-cache-*
+/ts-node-*
+
+# Environment files
+.env

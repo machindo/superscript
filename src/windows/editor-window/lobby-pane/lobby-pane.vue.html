@@ -1,0 +1,17 @@
+<div class="pane lobby-pane">
+  <div>
+    <svg class="app-logo" viewBox="0 0 217.1 276.9">
+      <use href="#app-logo" />
+    </svg>
+    <div class="app-version">v{{ version }}</div>
+  </div>
+
+  <div class="lobby-content">
+    <h2>Open file</h2>
+    <button type="button" @click="openFile()">New file</button>
+    <hr v-if="recentFiles.length">
+    <button type="button" v-for="file of recentFiles" :key="file" @click="openFile(file)">{{ file }}</button>
+    <hr v-if="recentFiles.length">
+    <button type="button" @click="showOpenFileDialog">Open file...</button>
+  </div>
+</div>

@@ -1,0 +1,216 @@
+@import '../../vars'
+
+:root
+  --default-font-size $defaultFontSize
+  --minimum-font-size $minimumFontSize
+  --maximum-font-size $maximumFontSize
+  --font-size $defaultFontSize
+  --editor-font-family $editorFontFamily
+  --caret-color darken($cursorColor, 50%)
+  --page-word-count-limit 210
+  --panel-word-count-limit 35
+  --bubble-word-count-limit 25
+  --page-word-count-limit-string '210'
+  --panel-word-count-limit-string '35'
+  --bubble-word-count-limit-string '25'
+
+.editor-pane
+  grid-area editor
+  display grid
+  position relative
+  background var(--window-background)
+  overflow-x auto
+  overflow-y scroll
+  caret-color var(--caret-color)
+  grid-template-areas 'outline editor comments'
+  grid-template-columns 1fr auto 1fr
+
+  ::-webkit-scrollbar
+    background var(--editor-page-background)
+
+  ::selection
+    background $cursorColor
+
+  .comment-panel
+    font-size var(--font-size)
+
+  .quill-editor
+  .ql-container
+    min-height 100%
+
+  .ql-container
+    flex 1
+    padding 1em 0 90vh
+    font-family var(--editor-font-family)
+    font-size var(--font-size)
+    font-variant-ligatures common-ligatures contextual discretionary-ligatures historical-ligatures
+    transition background .1s
+
+  .ql-editor
+    position relative
+    width $lineLength
+    height auto
+    min-height 100%
+    margin 0 auto
+    overflow visible
+    tab-size 2
+    color var(--editor-color)
+
+    > *
+      padding 0 2rem
+      background var(--editor-page-background)
+      box-shadow 1px 0 var(--editor-page-border-color), -1px 0 var(--editor-page-border-color)
+
+    > :last-child
+    > .last-line-of-page
+      padding-bottom 1rem
+      border-bottom solid 1px var(--editor-page-border-color)
+
+    > h1
+    > :first-child
+      padding-top 2rem
+      border-top solid 1px var(--editor-page-border-color)
+      font-size calc((var(--font-size) * 16 / 9))
+      font-weight bold
+
+    // Page heading
+    h1
+      margin-top 1rem
+      font-size calc((var(--font-size) * 16 / 9))
+
+    // Panel heading
+    h2:not(.offpage-true)
+      font-size calc((var(--font-size) * 4 / 3))
+
+    // Character heading
+    h3:not(.offpage-true)
+      text-transform uppercase
+      font-size inherit
+      font-weight normal
+
+    // Dialog
+    > blockquote
+      padding 0 calc(2rem + 2ch)
+      text-indent -2ch
+
+    img
+      max-width 100%
+
+    pre
+      font-family inherit
+
+    a
+      &.ctrl-pressed
+        cursor pointer
+
+      &:hover::before
+        content '\2318-click to open in browser'
+        display block
+        position absolute
+        margin-top -4em
+        padding 1.2em 1em .8em
+        border-radius 1em
+        background ButtonHighlight
+        box-shadow 0 2px 2px ButtonShadow
+        line-height 0
+        color ButtonText
+
+  [comment]
+    text-decoration underline $brandSecondaryColor
+
+  .highlight-found
+    background $highlightBackground
+    outline solid 2px $highlightBackground
+
+  .highlight-primary
+    background $primaryHighlightBackground
+    outline solid 2px $primaryHighlightBackground
+
+  h1
+  h2
+  h3
+    &::after
+    display inline-block // Prevent underline
+      text-indent 0
+      vertical-align baseline
+      text-transform none
+      font-family system-ui
+      font-size calc(var(--font-size) * .7)
+      font-weight normal
+      color var(--word-count-color)
+      pointer-events none // Prevent weird click effects when using inline-block
+
+  &.show-word-count h1::after
+  &.show-word-count h2::after
+  &.show-word-count h3::after
+    content ' ' var(--word-count-string)
+
+  &.show-panel-count h1::after
+    content ' (' var(--panel-count-string, '0 panels') ')'
+
+  &.show-panel-count.show-word-count h1::after
+    content ' (' var(--panel-count-string, '0 panels') ') ' var(--word-count-string, '')
+
+  &.show-word-count-limit
+    h1::after
+    h3::after
+      color #2b5213
+
+    h1::after
+      content ' ' var(--word-count-string) '/' var(--page-word-count-limit-string)
+
+    h3::after
+      content ' ' var(--word-count-string) '/' var(--bubble-word-count-limit-string)
+
+  &.letterer-mode
+  &.show-character-numbers
+    h1
+      counter-reset character
+
+    h3::before
+      counter-increment character
+      content counter(character) '. '
+
+  &.letterer-mode
+    blockquote
+      background var(--dialog-selectable-bg) !important
+      cursor copy
+
+      &.selected
+      &:hover
+        background var(--dialog-selected-bg) !important
+
+@css {
+  .show-word-count.show-word-count-limit h1::after {
+    filter: sepia(calc(var(--word-count) / var(--page-word-count-limit, 1))) saturate(calc(var(--word-count) / var(--page-word-count-limit, 1) * 30))
+  }
+
+  .show-word-count.show-word-count-limit h3::after {
+    filter: sepia(calc(var(--word-count) / var(--bubble-word-count-limit, 1))) saturate(calc(var(--word-count) / var(--bubble-word-count-limit, 1) * 30))
+  }
+}
+
+.editor-element
+  grid-area editor
+
+.comment-panel
+  grid-area comments
+  padding 1em 0
+
+.scrollbar-markers
+  position fixed
+  top 0
+  right 1px
+  bottom 0
+  width 10px
+  mix-blend-mode multiply
+  pointer-events none
+
+.scrollbar-marker
+  position absolute
+  width 100%
+  min-height 3px
+
+.scrollbar-marker--current-cursor
+  background $cursorColor
+  opacity 1

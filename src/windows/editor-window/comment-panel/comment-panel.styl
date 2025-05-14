@@ -1,0 +1,21 @@
+@import '../../vars'
+
+.comment-panel
+  --line-length $lineLength
+  --highlight-color #ff0
+
+  display flex
+  flex-direction column
+
+.comment-panel--comment-entry
+  display flex
+
+.comment-panel--input
+  flex 1
+  margin 0
+  padding 1ch
+  border none
+  outline solid 1px rgba(black .1)
+  background $pageBackground
+  resize none
+  font-size $defaultFontSize * .75

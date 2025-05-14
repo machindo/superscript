@@ -1,0 +1,104 @@
+@import '../../vars'
+
+.bar-tab
+  flex 1
+  display flex
+  position relative
+  min-width 20px
+  max-width 200px
+  height 30px
+  margin-top 8px
+  padding 0 13px
+  font-size .8rem
+  color var(--inactive-window-text-color)
+  align-items stretch
+  -webkit-app-region no-drag
+
+  &::before
+    content ''
+    display block
+    position absolute
+    top 0
+    left 15px
+    right 15px
+    bottom 0
+
+  &:hover
+  &.active
+    color var(--window-text-color)
+    opacity .6
+
+    &::before
+      background var(--window-background)
+
+  &.active
+    opacity 1
+    z-index 1
+
+.bar-tab--graphic
+  position absolute
+  top 0
+  stroke-width 1px
+
+.bar-tab--graphic-left
+  left 0
+
+.bar-tab--graphic-right
+  right 0
+
+.bar-tab--background
+  fill none
+
+  .bar-tab:hover &
+  .bar-tab.active &
+    fill var(--window-background)
+
+.bar-tab--title
+  display block
+  position relative
+  padding 7px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+  cursor default
+  pointer-events none
+
+.bar-tab--dirty-marker
+  padding 8px 7px 8px 0
+  font-size .8em
+  opacity .6
+
+.bar-tab--button
+  display none
+  position relative
+  border none
+  width 30px
+  margin-left auto
+  margin-right 0
+  padding 5px
+  fill var(--tab-border-color)
+
+  :hover > &
+    display block
+
+.bar-tab.new-tab-button
+  flex 0 0 50px
+  margin-right auto
+  padding 0
+  border none
+  outline none
+  fill var(--tab-border-color)
+  justify-content center
+  opacity 0
+  transition opacity .15s
+
+  :hover > &
+    opacity .8
+
+  &:hover
+  &:focus
+    border none
+    fill $brandSecondaryColor
+
+  .icon
+    position relative

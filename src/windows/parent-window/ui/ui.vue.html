@@ -1,0 +1,20 @@
+<div class="ui-wrapper" @mouseup="drop">
+  <div class="title-bar" @dblclick="maximizeWindow" @mouseleave="drop">
+    <div class="bar-tabs" :class="{ 'is-mac': isMac }">
+      <bar-tab v-for="(tab, index) of tabs" :key="tab.id" :class="{ active: index === activeTabIndex }" :dirty="tab.dirty" :title="tab.title"
+        :offset="tab.offset" @mousedown="dragstart(index, $event)" @mousemove="drag(index, $event)" @close="closeTab(index)"></bar-tab>
+      <button class="bar-tab new-tab-button" @click="createTab()">
+        <svg class="bar-tab--graphic bar-tab--graphic-left" viewBox="0 0 16 30" width="16" height="30">
+          <path class="bar-tab--background" d="M0,30 C2,30 4,29 5,25 L10,5 C11,2 11,0 15,0 L 16,0 15,30 Z"></path>
+        </svg>
+        <svg class="bar-tab--graphic bar-tab--graphic-right" viewBox="0 0 16 30" width="16" height="30">
+          <path class="bar-tab--background" d="M 15 30 C 13 30 11 29 10 25 L 5 5 C 4 2 4 0 0 0 V 30 Z"></path>
+        </svg>
+        <svg class="icon" width="24" height="24" viewBox="0 0 24 24">
+          <path d="M18,13h-5v5c0,0.55-0.45,1-1,1h0c-0.55,0-1-0.45-1-1v-5H6c-0.55,0-1-0.45-1-1v0c0-0.55,0.45-1,1-1h5V6c0-0.55,0.45-1,1-1h0 c0.55,0,1,0.45,1,1v5h5c0.55,0,1,0.45,1,1v0C19,12.55,18.55,13,18,13z" />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div ref="tabViews" class="tab-views"></div>
+</div>

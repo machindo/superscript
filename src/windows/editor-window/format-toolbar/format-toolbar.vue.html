@@ -1,0 +1,59 @@
+<div class="format-toolbar">
+  <div v-show="visible" class="pane toolbar">
+    <div class="format-toolbar--element-type">
+      <span v-if="currentStyles.frontmatter">Frontmatter</span>
+      <span v-else-if="currentStyles.header === 1">Page heading</span>
+      <span v-else-if="currentStyles.header === 2">Panel heading</span>
+      <span v-else-if="currentStyles.header === 3">Character heading</span>
+      <span v-else-if="currentStyles.blockquote">Dialog</span>
+      <span v-else>Normal</span>
+    </div>
+
+    <button class="style-button style-button--bold" :disabled="currentStyles.frontmatter || currentStyles.header"
+      :selected="currentStyles.bold" @click="toggleStyle('bold')" title="Bold">B</button>
+    <button class="style-button style-button--italic" :disabled="currentStyles.frontmatter || currentStyles.header"
+      :selected="currentStyles.italic" @click="toggleStyle('italic')" title="Italicize">I</button>
+    <button class="style-button style-button--underline" :disabled="currentStyles.frontmatter || currentStyles.header"
+      :selected="currentStyles.underline" @click="toggleStyle('underline')" title="Underline">U</button>
+    <button class="style-button style-button--strike" :disabled="currentStyles.frontmatter || currentStyles.header"
+      :selected="currentStyles.strike" @click="toggleStyle('strike')" title="Strikethrough">S</button>
+    <div class="spacer"></div>
+    <button class="style-button style-button--icon" :disabled="currentStyles.frontmatter || currentStyles.header || currentStyles.blockquote"
+      :selected="currentStyles.list === 'bullet'" @click="toggleList('bullet')" title="Bulleted list">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M4 10.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm0-6c-.83 0-1.5.67-1.5 1.5S3.17 7.5 4 7.5 5.5 6.83 5.5 6 4.83 4.5 4 4.5zm0 12c-.83 0-1.5.68-1.5 1.5s.68 1.5 1.5 1.5 1.5-.68 1.5-1.5-.67-1.5-1.5-1.5zM7 19h14v-2H7v2zm0-6h14v-2H7v2zm0-8v2h14V5H7z" />
+      </svg>
+    </button>
+    <button class="style-button style-button--icon" :disabled="currentStyles.frontmatter || currentStyles.header || currentStyles.blockquote"
+      :selected="currentStyles.list === 'ordered'" @click="toggleList('ordered')" title="Ordered list">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M2 17h2v.5H3v1h1v.5H2v1h3v-4H2v1zm1-9h1V4H2v1h1v3zm-1 3h1.8L2 13.1v.9h3v-1H3.2L5 10.9V10H2v1zm5-6v2h14V5H7zm0 14h14v-2H7v2zm0-6h14v-2H7v2z" />
+      </svg>
+    </button>
+    <button class="style-button style-button--icon" :disabled="!currentStyles.list || !currentStyles.indent" @click="indent(-1)"
+      title="Decrease indent">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M11 17h10v-2H11v2zm-8-5l4 4V8l-4 4zm0 9h18v-2H3v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z" />
+      </svg>
+    </button>
+    <button class="style-button style-button--icon" :disabled="!currentStyles.list" @click="indent(1)" title="Increase indent">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <path d="M3 21h18v-2H3v2zM3 8v8l4-4-4-4zm8 9h10v-2H11v2zM3 3v2h18V3H3zm8 6h10V7H11v2zm0 4h10v-2H11v2z" />
+      </svg>
+    </button>
+
+    <button type="button" class="close-button" @click="hide">
+      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+        <path d="M0 0h24v24H0z" fill="none" />
+      </svg>
+    </button>
+  </div>
+
+  <div v-if="!visible" class="format-hover-toolbar">
+    <div v-if="currentStyles.bold" class="style-indicator style-indicator--bold" title="Bold">B</div>
+    <div v-if="currentStyles.italic" class="style-indicator style-indicator--italic" title="Italicize">I</div>
+    <div v-if="currentStyles.underline" class="style-indicator style-indicator--underline" title="Underline">U</div>
+    <div v-if="currentStyles.strike" class="style-indicator style-indicator--strike" title="Strikethrough">S</div>
+  </div>
+</div>
