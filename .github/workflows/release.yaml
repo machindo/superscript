@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu]
+        os: [macos, ubuntu, windows]
     runs-on: ${{ matrix.os }}-latest
     permissions:
       contents: write
@@ -51,8 +51,3 @@ jobs:
           CSC_LINK: ${{ secrets.CSC_LINK }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           WORDS_API_KEY: ${{ secrets.WORDS_API_KEY }}
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ runner.os }}-dist
-          path: dist
