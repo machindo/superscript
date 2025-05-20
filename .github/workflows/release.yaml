@@ -37,7 +37,7 @@ jobs:
             ${{ runner.os }}-electron-build-
       - name: Install linux dependencies
         if: runner.os == 'Linux'
-        run: sudo apt-get update && sudo apt-get install -y libx11-dev
+        run: sudo apt-get update && sudo apt-get install -y libxtst-dev libpng++-dev
       - name: Install dependencies
         run: npm ci
       - name: Build
