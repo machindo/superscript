@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [macos, ubuntu, windows]
+        os: [ubuntu]
     runs-on: ${{ matrix.os }}-latest
     permissions:
       contents: write
@@ -35,11 +35,11 @@ jobs:
           key: ${{ runner.os }}-electron-build-${{ hashFiles('dist') }}
           restore-keys: |
             ${{ runner.os }}-electron-build-
-      - name: Install dependencies
-        run: npm ci
       - name: Install linux dependencies
         if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y libx11-dev
+      - name: Install dependencies
+        run: npm ci
       - name: Build
         run: npm run build
         env:
