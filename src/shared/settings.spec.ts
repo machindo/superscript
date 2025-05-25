@@ -6,7 +6,7 @@ import sinon from 'sinon'
 
 import until from 'test/until'
 
-import { Settings as OriginalSettings } from './settings'
+import { getDir, Settings as OriginalSettings } from './settings'
 
 interface SettingsModule {
   Settings: typeof OriginalSettings
@@ -23,7 +23,12 @@ const { Settings } = proxyquire<SettingsModule>('./settings', {
   }
 })
 
-test.before(() => fs.remove(Settings.dir))
+let dir = ''
+
+test.before(async () => {
+  dir = await getDir()
+  fs.remove(dir)
+})
 test.after(() => Settings.unwatchAll())
 
 test('settings file does not exist', async t => {
@@ -43,7 +48,7 @@ test('getting a nonexistant file returns fallback', async t => {
 
 test('saves data to file', async t => {
   await Settings.set('testSetting1', { prop: '123' })
-  const fileExists = await fs.pathExists(path.join(Settings.dir, 'testSetting1.json'))
+  const fileExists = await fs.pathExists(path.join(dir, 'testSetting1.json'))
   t.true(fileExists)
 })
 
@@ -74,7 +79,7 @@ test.serial('settings instance saves data to file', async t => {
   const setting = new Settings<{ prop: string }>('testSetting4')
   t.truthy(setting)
   await setting.set({ prop: '123' })
-  const fileExists = await fs.pathExists(path.join(Settings.dir, 'testSetting4.json'))
+  const fileExists = await fs.pathExists(path.join(dir, 'testSetting4.json'))
   t.true(fileExists)
 })
 
@@ -132,7 +137,7 @@ test('file deletion is emitted', async t => {
   settingB.on('unlink', unlinkSpy)
 
   await until(() => addSpy.called, { errorOnTimeout: false })
-  await fs.remove(path.join(Settings.dir, 'testSetting7.json'))
+  await fs.remove(path.join(dir, 'testSetting7.json'))
   await until(() => unlinkSpy.called)
 
   settingA.unwatch()

@@ -38,9 +38,7 @@
       <div class="select-wrapper">
         <select v-model="autoHideMenuBarChoice">
           <option :value="false">Visible</option>
-          <option :value="true"
-            >Hidden (press Alt key to toggle menu bar)</option
-          >
+          <option :value="true">Hidden (press Alt key to toggle menu bar)</option>
         </select>
       </div>
     </div>
@@ -52,21 +50,15 @@
     <div class="select-wrapper">
       <select v-model="editorFontFamily">
         <option value="Courier Prime Sans">Courier Prime Sans (default)</option>
-        <optgroup
-          :label="availableFonts.length ? 'Installed fonts' : 'Installed fonts (loading...)'"
-        >
-          <option v-for="font of availableFonts" :value="font"
-            >{{ font }}</option
-          >
+        <optgroup :label="availableFonts.length ? 'Installed fonts' : 'Installed fonts (loading...)'">
+          <option v-for="font of availableFonts" :value="font">{{ font }}</option>
         </optgroup>
       </select>
     </div>
     <button @click="resetEditorFontFamily">Reset to default</button>
     <p>
-      <small
-        >Note: typeface selection only applies to the editor. Exported documents
-        will a default typeface.</small
-      >
+      <small>Note: typeface selection only applies to the editor. Exported documents
+        will use a default typeface.</small>
     </p>
 
     <label>
