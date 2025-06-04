@@ -21,7 +21,7 @@
     "start:electron": "nodemon -w packed/main.js -x \"electron ./packed/main.js\"",
     "prebuild": "npm run clean && webpack",
     "build": "run-script-os",
-    "build:darwin": "electron-builder -m",
+    "build:darwin": "electron-builder -m --universal",
     "build:linux": "electron-builder -l",
     "build:win32": "electron-builder -w --ia32 --x64",
     "install-app-deps": "electron-builder install-app-deps",

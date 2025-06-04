@@ -4,7 +4,7 @@ directories:
 appId: app.superscript.superscript
 productName: Superscript
 files:
-  - 'packed/*'
+  - "packed/*"
 linux:
   category: Office
   target:
@@ -13,11 +13,10 @@ linux:
     - rpm
 mac:
   category: public.app-category.productivity
-  gatekeeperAssess: false
+  gatekeeperAssess: true
   hardenedRuntime: true
   target:
     - dmg
-    # - pkg
     - zip
   entitlements: build/entitlements.mac.plist
 win:
