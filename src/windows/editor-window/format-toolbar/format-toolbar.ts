@@ -1,5 +1,6 @@
 import delay from 'lodash-decorators/delay'
 import Quill from 'quill'
+import Delta from 'quill-delta'
 import Vue from 'vue'
 import Component from 'vue-class-component'
 import { namespace } from 'vuex-class'
@@ -27,6 +28,24 @@ export class FormatToolbar extends Vue {
     this.editor = this.$root.$refs.editorPane.editor
     this.editor.on('selection-change', this.updateCurrentStyles)
     this.editor.on('text-change', this.updateCurrentStyles)
+  }
+
+  toggleLetterCase() {
+    const selection = this.editor.getSelection()
+
+    if (!selection) return
+
+    const selectedText = this.editor.getText(selection.index, selection.length)
+    const uppercase = selectedText.toLocaleUpperCase()
+    const lowercase = selectedText.toLocaleLowerCase()
+
+    this.editor.updateContents(new Delta({
+      ops: [
+        { retain: selection.index },
+        { delete: selection.length },
+        { insert: selectedText === uppercase ? lowercase : uppercase }
+      ]
+    }), 'user')
   }
 
   toggleStyle(style: string) {

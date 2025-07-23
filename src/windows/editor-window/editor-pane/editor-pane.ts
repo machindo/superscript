@@ -140,6 +140,13 @@ export class EditorPane extends Vue {
                 renderer.ui.$refs.formatToolbar.toggleStyle('bold')
               }
             },
+            toggleLetterCase: {
+              key: 'K',
+              shortKey: true,
+              handler() {
+                renderer.ui.$refs.formatToolbar.toggleLetterCase()
+              }
+            },
             italic: {
               key: 'I',
               shortKey: true,
