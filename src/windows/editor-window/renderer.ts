@@ -463,6 +463,7 @@ class Renderer {
     menu.getMenuItemById('underline')!.checked = currentStyles && currentStyles.underline as boolean
     menu.getMenuItemById('strike')!.enabled = store.state.ui.view === 'editor' && currentStyles && !currentStyles.frontmatter && !currentStyles.header
     menu.getMenuItemById('strike')!.checked = currentStyles && currentStyles.strike as boolean
+    menu.getMenuItemById('toggleLetterCase')!.enabled = store.state.ui.view === 'editor' && currentStyles && !currentStyles.frontmatter && !currentStyles.header
     menu.getMenuItemById('ul')!.enabled = store.state.ui.view === 'editor' && currentStyles && !currentStyles.frontmatter && !currentStyles.header && !currentStyles.blockquote
     menu.getMenuItemById('ol')!.enabled = store.state.ui.view === 'editor' && currentStyles && !currentStyles.frontmatter && !currentStyles.header && !currentStyles.blockquote
     menu.getMenuItemById('outdent')!.enabled = store.state.ui.view === 'editor' && currentStyles && currentStyles.list && currentStyles.indent
@@ -528,6 +529,7 @@ class Renderer {
     ipcRenderer.on('italic', () => this.ui.$refs.formatToolbar.toggleStyle('italic'))
     ipcRenderer.on('underline', () => this.ui.$refs.formatToolbar.toggleStyle('underline'))
     ipcRenderer.on('strike', () => this.ui.$refs.formatToolbar.toggleStyle('strike'))
+    ipcRenderer.on('toggleLetterCase', () => this.ui.$refs.formatToolbar.toggleLetterCase())
     ipcRenderer.on('ul', () => this.ui.$refs.formatToolbar.toggleList('bullet'))
     ipcRenderer.on('ol', () => this.ui.$refs.formatToolbar.toggleList('ordered'))
     ipcRenderer.on('outdent', () => this.ui.$refs.formatToolbar.indent(-1))

@@ -93,6 +93,7 @@ class Renderer {
     ipcRenderer.on('italic', () => this.ui.send('italic'))
     ipcRenderer.on('underline', () => this.ui.send('underline'))
     ipcRenderer.on('strike', () => this.ui.send('strike'))
+    ipcRenderer.on('toggleLetterCase', () => this.ui.send('toggleLetterCase'))
     ipcRenderer.on('ul', () => this.ui.send('ul'))
     ipcRenderer.on('ol', () => this.ui.send('ol'))
     ipcRenderer.on('outdent', () => this.ui.send('outdent'))

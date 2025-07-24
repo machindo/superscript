@@ -51,7 +51,9 @@ class Renderer {
     menu.getMenuItemById('underline')!.enabled = false
     menu.getMenuItemById('underline')!.checked = false
     menu.getMenuItemById('strike')!.enabled = false
-    menu.getMenuItemById('strike')!.checked = false
+    menu.getMenuItemById('strike')!.enabled = false
+    menu.getMenuItemById('strike')!.enabled = false
+    menu.getMenuItemById('toggleLetterCase')!.checked = false
     menu.getMenuItemById('ul')!.enabled = false
     menu.getMenuItemById('ol')!.enabled = false
     menu.getMenuItemById('outdent')!.enabled = false

@@ -170,6 +170,13 @@ function menuTemplate(): MenuItemConstructorOptions[] {
       }, {
         type: 'separator'
       }, {
+        id: 'toggleLetterCase',
+        label: 'Toggle letter case',
+        click: Commands.toggleLetterCase,
+        enabled: false
+      }, {
+        type: 'separator'
+      }, {
         id: 'ul',
         label: 'Bulleted list',
         click: Commands.ul,

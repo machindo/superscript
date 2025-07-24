@@ -126,6 +126,10 @@ export namespace Commands {
     sendToFocusedWindow('strike')
   }
 
+  export function toggleLetterCase() {
+    sendToFocusedWindow('toggleLetterCase')
+  }
+
   export function ul() {
     sendToFocusedWindow('ul')
   }
