@@ -4,22 +4,22 @@
     'show-word-count': wordCountSettings.showCount,
     'show-word-count-limit': wordCountSettings.showLimit,
     'letterer-mode': lettererMode
-  }"
-  :style="{
+  }" :style="{
     '--page-word-count-limit': wordCountSettings.page,
     '--page-word-count-limit-string': '\'' + wordCountSettings.page + '\'',
     '--bubble-word-count-limit': wordCountSettings.bubble,
     '--bubble-word-count-limit-string': '\'' + wordCountSettings.bubble + '\''
-  }"
-  @click="onClick" @keydown.up="onUpArrow" @keydown.down="onDownArrow" @keydown.esc="onEsc" @keydown.enter.capture="onEnter"
-  @keydown="onKeyDown" @keydown.tab.capture="onEnter">
+  }" @click="onClick" @keydown.up="onUpArrow" @keydown.down="onDownArrow" @keydown.esc="onEsc"
+  @keydown.enter.capture="onEnter" @keydown="onKeyDown" @keydown.tab.capture="onEnter">
 
   <outline-panel ref="outlinePanel" :pages="pages"></outline-panel>
-  <div ref="editor" class="editor-element"></div>
+  <div ref="editor" class="editor-element" :spellcheck="spellCheckEnabled"></div>
   <comment-panel ref="commentPanel" class="comment-panel" :comments="comments"></comment-panel>
 
   <div v-if="$el" class="scrollbar-markers">
-    <div class="scrollbar-marker scrollbar-marker--cursor scrollbar-marker--current-cursor" :style="{ top: currentCursorTop / $el.scrollHeight * 100 + '%', height: currentCursorHeight / $el.scrollHeight * 100 + '%' }"></div>
+    <div class="scrollbar-marker scrollbar-marker--cursor scrollbar-marker--current-cursor"
+      :style="{ top: currentCursorTop / $el.scrollHeight * 100 + '%', height: currentCursorHeight / $el.scrollHeight * 100 + '%' }">
+    </div>
   </div>
 
   <floating-menu ref="floatingMenu"></floating-menu>

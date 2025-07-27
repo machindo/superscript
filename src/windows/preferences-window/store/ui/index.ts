@@ -12,6 +12,7 @@ export const state: UiState = {
   displayPageOutline: true,
   displayPanelCount: false,
   editorFontFamily: 'Courier Prime Sans',
+  spellCheckEnabled: true,
   spellCheckLocale: 'en-US',
   wordCountSettings: {
     showCount: false,
@@ -33,6 +34,7 @@ export const ui: Module<UiState, RootState> = {
       displayPageOutline: state.displayPageOutline,
       displayPanelCount: state.displayPanelCount,
       editorFontFamily: state.editorFontFamily,
+      spellCheckEnabled: state.spellCheckEnabled,
       spellCheckLocale: state.spellCheckLocale
     }),
     wordCountSettings: state => state.wordCountSettings

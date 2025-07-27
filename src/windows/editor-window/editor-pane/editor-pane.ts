@@ -91,6 +91,7 @@ export class EditorPane extends Vue {
 
   @uiModule.State displayPanelCount: boolean
   @uiModule.State showCharacterNumbers: boolean
+  @uiModule.State spellCheckEnabled: boolean
   @uiModule.State spellCheckLocale: string
   @uiModule.State wordCountSettings: WordCountSettings
   @uiModule.Action showDictionaryToolbar: Function

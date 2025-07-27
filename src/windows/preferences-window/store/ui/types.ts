@@ -4,6 +4,7 @@ export interface UiState {
   displayPageOutline: boolean
   displayPanelCount: boolean
   editorFontFamily: string
+  spellCheckEnabled: boolean
   spellCheckLocale: string
   wordCountSettings: WordCountSettings
 }

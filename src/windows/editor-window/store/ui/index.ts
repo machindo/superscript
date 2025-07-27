@@ -21,6 +21,7 @@ export const state: UiState = {
   searchText: '',
   searchToolbarVisible: false,
   showCharacterNumbers: false,
+  spellCheckEnabled: true,
   spellCheckLocale: 'en-US',
   view: null,
   wordCountSettings: {
@@ -43,6 +44,7 @@ export const ui: Module<UiState, RootState> = {
       displayPageOutline: state.displayPageOutline,
       displayPanelCount: state.displayPanelCount,
       editorFontFamily: state.editorFontFamily,
+      spellCheckEnabled: state.spellCheckEnabled,
       spellCheckLocale: state.spellCheckLocale
     }),
     wordCountSettings: state => state.wordCountSettings

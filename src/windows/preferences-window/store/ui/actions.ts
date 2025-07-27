@@ -24,6 +24,10 @@ export const actions: ActionTree<UiState, RootState> = {
     commit('updateEditorFontFamily', value)
   },
 
+  updateSpellCheckEnabled({ commit }, value: boolean) {
+    commit('updateSpellCheckEnabled', value)
+  },
+
   updateSpellCheckLocale({ commit }, value: string) {
     commit('updateSpellCheckLocale', value)
   },
@@ -43,6 +47,10 @@ export const actions: ActionTree<UiState, RootState> = {
 
     if (payload.editorFontFamily !== undefined) {
       commit('updateEditorFontFamily', payload.editorFontFamily)
+    }
+
+    if (payload.spellCheckEnabled !== undefined) {
+      commit('updateSpellCheckEnabled', payload.spellCheckEnabled)
     }
 
     if (payload.spellCheckLocale !== undefined) {

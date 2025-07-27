@@ -49,6 +49,9 @@ export const mutations: MutationTree<UiState> = {
   updateSearchToolbarVisible(state, payload: boolean) {
     state.searchToolbarVisible = payload
   },
+  updateSpellCheckEnabled(state, enable: boolean) {
+    state.spellCheckEnabled = enable
+  },
   updateSpellCheckLocale(state, locale: string) {
     state.spellCheckLocale = locale
     // Try to wait for renderer.win to be available

@@ -37,6 +37,7 @@ export class PreferencesPane extends Vue {
   @uiModule.State colorTheme: 'light-theme' | 'dark-theme'
   @uiModule.State displayPanelCount: boolean
   @uiModule.State('editorFontFamily') editorFontFamilyStore: string
+  @uiModule.State spellCheckEnabled: boolean
   @uiModule.State spellCheckLocale: string
   @uiModule.State wordCountSettings: WordCountSettings
 
@@ -44,6 +45,7 @@ export class PreferencesPane extends Vue {
   @uiModule.Action updateColorTheme: Function
   @uiModule.Action updateDisplayPanelCount: Function
   @uiModule.Action updateEditorFontFamily: Function
+  @uiModule.Action updateSpellCheckEnabled: Function
   @uiModule.Action updateSpellCheckLocale: Function
 
   @uiModule.Action toggleWordCount: Function
@@ -134,6 +136,15 @@ export class PreferencesPane extends Vue {
 
   get editorFontFamily(): string {
     return this.editorFontFamilyStore
+  }
+
+  @Debounce(200)
+  set isSpellCheckEnabled(value: boolean) {
+    this.updateSpellCheckEnabled(value)
+  }
+
+  get isSpellCheckEnabled() {
+    return this.spellCheckEnabled
   }
 
   set spellCheckLang(value: string) {

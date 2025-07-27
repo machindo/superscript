@@ -72,6 +72,12 @@
       <p>A long, long time ago, in a house no bigger than a breadbox ...</p>
     </div>
 
+    <div>
+      <label>
+        <input type="checkbox" v-model="isSpellCheckEnabled" /> Enable spell check
+      </label>
+    </div>
+
     <div v-if="isMac">
       <label>Spell check language</label>
       <div class="select-wrapper">

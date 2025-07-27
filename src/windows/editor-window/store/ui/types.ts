@@ -13,6 +13,7 @@ export interface UiState {
   searchText: string
   searchToolbarVisible: boolean
   showCharacterNumbers: boolean
+  spellCheckEnabled: boolean
   spellCheckLocale: string
   view: 'editor' | 'lobby' | null
   wordCountSettings: WordCountSettings

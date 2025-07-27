@@ -18,6 +18,9 @@ export const mutations: MutationTree<UiState> = {
     state.editorFontFamily = payload
     document.documentElement.style.setProperty('--editor-font-family', payload)
   },
+  updateSpellCheckEnabled(state, enable: boolean) {
+    state.spellCheckEnabled = enable
+  },
   updateSpellCheckLocale(state, payload: string) {
     state.spellCheckLocale = payload
   },

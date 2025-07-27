@@ -51,6 +51,7 @@ const store: StoreOptions<RootState> = {
         'ui/updateColorTheme',
         'ui/updateDisplayPanelCount',
         'ui/updateEditorFontFamily',
+        'ui/updateSpellCheckEnabled',
         'ui/updateSpellCheckLocale'
       ],
       updateAction: 'ui/updateUISettings'
