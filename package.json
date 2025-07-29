@@ -1,6 +1,6 @@
 {
   "name": "superscript",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "engines": {
     "node": "^22.14.0"
   },
