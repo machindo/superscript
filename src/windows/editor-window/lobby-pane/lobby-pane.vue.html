@@ -8,10 +8,17 @@
 
   <div class="lobby-content">
     <h2>Open file</h2>
-    <button type="button" @click="openFile()">New file</button>
+    <div class="file-actions">
+      <button type="button" @click="openFile()">New file</button>
+      <button type="button" @click="showOpenFileDialog">Open file...</button>
+    </div>
     <hr v-if="recentFiles.length">
-    <button type="button" v-for="file of recentFiles" :key="file" @click="openFile(file)">{{ file }}</button>
+    <p>Recent files</p>
+    <button type="button" v-for="file of recentFiles" :key="file" @click="openFile(file)">
+      <strong>{{ file.split('/').pop() }}</strong>
+      <span>{{file}}</span>
+    </button>
     <hr v-if="recentFiles.length">
-    <button type="button" @click="showOpenFileDialog">Open file...</button>
+
   </div>
 </div>
